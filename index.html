@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>spsmarttech | Professional Web Design & Development</title>
+  <meta name="description" content="Professional web design services specializing in School Management Systems, Business Websites, and Custom Web Applications including Exam CBT Software.">
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS Animation -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4361ee;
+      --secondary: #3a0ca3;
+      --accent: #f72585;
+      --dark: #1a1a2e;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #333;
+      background-color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+    
+    /* Navbar */
+    .navbar {
+      background-color: rgba(26, 26, 46, 0.95) !important;
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      background: linear-gradient(90deg, #4361ee, #f72585);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      margin: 0 0.5rem;
+      transition: color 0.3s;
+    }
+    
+    .nav-link:hover {
+      color: var(--accent) !important;
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(58, 12, 163, 0.8)), 
+                  url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      position: relative;
+      color: white;
+      padding-top: 80px;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    
+    .typing-text {
+      color: #fff;
+      border-right: 3px solid var(--accent);
+      padding-right: 5px;
+      display: inline-block;
+    }
+    
+    .hero-btns {
+      margin-top: 2rem;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border: none;
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+    }
+    
+    .btn-outline-light {
+      border: 2px solid white;
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline-light:hover {
+      background-color: white;
+      color: var(--dark);
+    }
+    
+    /* Section Styling */
+    section {
+      padding: 5rem 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 70px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    /* Services */
+    .service-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      height: 100%;
+      transition: all 0.3s ease;
+      border: 1px solid #e9ecef;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary);
+    }
+    
+    .service-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    /* Portfolio */
+    .portfolio-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .portfolio-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .portfolio-img {
+      height: 200px;
+      object-fit: cover;
+      width: 100%;
+    }
+    
+    /* Pricing */
+    .pricing-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 2px solid #e9ecef;
+      height: 100%;
+    }
+    
+    .pricing-card.featured {
+      border-color: var(--primary);
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(67, 97, 238, 0.15);
+    }
+    
+    .pricing-card:hover {
+      border-color: var(--primary);
+    }
+    
+    .price {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 1.5rem 0;
+    }
+    
+    .price span {
+      font-size: 1rem;
+      color: var(--gray);
+    }
+    
+    /* Testimonials */
+    .testimonial-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      height: 100%;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .testimonial-text::before {
+      content: '"';
+      font-size: 4rem;
+      color: var(--primary);
+      opacity: 0.2;
+      position: absolute;
+      top: -20px;
+      left: -10px;
+      font-family: serif;
+    }
+    
+    /* Contact */
+    .contact-form {
+      background: white;
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    }
+    
+    .form-control {
+      padding: 0.8rem 1rem;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
+    }
+    
+    /* Statistics */
+    .stats-section {
+      background: linear-gradient(135deg, var(--dark), #16213e);
+      color: white;
+    }
+    
+    .stat-item h3 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: #adb5bd;
+      padding: 4rem 0 2rem;
+    }
+    
+    .footer-links h5 {
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links a {
+      color: #adb5bd;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      margin-right: 0.75rem;
+      transition: all 0.3s;
+    }
+    
+    .social-icons a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    /* Floating Elements */
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      transition: all 0.3s;
+    }
+    
+    .floating-whatsapp:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+    }
+    
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    
+    body.dark-mode .service-card,
+    body.dark-mode .pricing-card,
+    body.dark-mode .testimonial-card,
+    body.dark-mode .contact-form {
+      background-color: #1e1e1e;
+      border-color: #333;
+    }
+    
+    body.dark-mode .form-control {
+      background-color: #2d2d2d;
+      border-color: #444;
+      color: #e0e0e0;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      section {
+        padding: 3rem 0;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .pricing-card.featured {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-code me-2"></i>spsmarttech
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-2">
+            <button class="btn btn-sm btn-outline-light" id="darkToggle">
+              <i class="fas fa-moon"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8 mx-auto text-center">
+          <div class="hero-content" data-aos="fade-up">
+            <h1>Professional <span class="typing-text" id="typingText"></span></h1>
+            <p class="lead mb-4">Specializing in <strong>School Management Systems</strong>, <strong>Business Websites</strong>, and <strong>Custom Web Applications</strong> including Exam CBT Software. We transform your ideas into powerful digital solutions.</p>
+            <div class="hero-btns">
+              <a href="#contact" class="btn btn-primary btn-lg me-3">Get Started</a>
+              <a href="#portfolio" class="btn btn-outline-light btn-lg">View Our Work</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-3 col-6 mb-4" data-aos="fade-up">
+          <div class="stat-item">
+            <h3 class="counter" data-target="150">0</h3>
+            <p>Projects Completed</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="stat-item">
+            <h3 class="counter" data-target="98">0</h3>
+            <p>Happy Clients</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="stat-item">
+            <h3 class="counter" data-target="12">0</h3>
+            <p>Years Experience</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="stat-item">
+            <h3 class="counter" data-target="24">0</h3>
+            <p>Support Hours</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Our Services</h2>
+        <p class="text-muted">We provide comprehensive web solutions tailored to your needs</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-school"></i>
+            </div>
+            <h4>School Management Systems</h4>
+            <p>Complete digital solutions including student portals, exam CBT software, result processing, fee management, and administrative dashboards tailored for educational institutions.</p>
+            <ul class="list-unstyled mt-3">
+              <li><i class="fas fa-check text-success me-2"></i>Exam & CBT Software</li>
+              <li><i class="fas fa-check text-success me-2"></i>Student & Parent Portals</li>
+              <li><i class="fas fa-check text-success me-2"></i>Result Processing</li>
+              <li><i class="fas fa-check text-success me-2"></i>Fee Management</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <h4>Business Websites</h4>
+            <p>Modern, responsive websites designed to boost your online presence, attract customers, and grow your business. From simple landing pages to complex e-commerce platforms.</p>
+            <ul class="list-unstyled mt-3">
+              <li><i class="fas fa-check text-success me-2"></i>Responsive Design</li>
+              <li><i class="fas fa-check text-success me-2"></i>SEO Optimized</li>
+              <li><i class="fas fa-check text-success me-2"></i>Fast Loading</li>
+              <li><i class="fas fa-check text-success me-2"></i>Easy to Manage</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h4>Custom Web Applications</h4>
+            <p>Tailored software solutions built with modern technologies (PHP, MySQL, JavaScript, React) to solve specific business challenges and streamline your operations.</p>
+            <ul class="list-unstyled mt-3">
+              <li><i class="fas fa-check text-success me-2"></i>Custom Development</li>
+              <li><i class="fas fa-check text-success me-2"></i>Database Integration</li>
+              <li><i class="fas fa-check text-success me-2"></i>API Development</li>
+              <li><i class="fas fa-check text-success me-2"></i>Maintenance & Support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio" class="bg-light">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Our Portfolio</h2>
+        <p class="text-muted">See some of our recent successful projects</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=600&q=80" class="portfolio-img" alt="School Management System">
+            <div class="p-4">
+              <h5>School Management System</h5>
+              <p class="text-muted">Complete digital platform for a secondary school with CBT exams, result portal, and fee management.</p>
+              <a href="#" class="btn btn-sm btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702?auto=format&fit=crop&w=600&q=80" class="portfolio-img" alt="Business Website">
+            <div class="p-4">
+              <h5>E-commerce Business Website</h5>
+              <p class="text-muted">Modern online store with shopping cart, payment integration, and admin dashboard.</p>
+              <a href="#" class="btn btn-sm btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1581091012184-5c2af6a4c1d3?auto=format&fit=crop&w=600&q=80" class="portfolio-img" alt="CBT System">
+            <div class="p-4">
+              <h5>CBT Examination System</h5>
+              <p class="text-muted">Custom Computer-Based Test platform with automatic grading and result analytics.</p>
+              <a href="#" class="btn btn-sm btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Pricing Plans</h2>
+        <p class="text-muted">Transparent pricing for all project types</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="pricing-card">
+            <h4>Basic Website</h4>
+            <div class="price">$199<span>/project</span></div>
+            <ul class="list-unstyled mb-4">
+              <li><i class="fas fa-check text-success me-2"></i>Up to 5 Pages</li>
+              <li><i class="fas fa-check text-success me-2"></i>Responsive Design</li>
+              <li><i class="fas fa-check text-success me-2"></i>Basic SEO</li>
+              <li><i class="fas fa-check text-success me-2"></i>Contact Form</li>
+              <li><i class="fas fa-times text-muted me-2"></i>No E-commerce</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline-primary w-100">Get Started</a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="pricing-card featured">
+            <span class="badge bg-primary position-absolute top-0 end-0 m-3">Popular</span>
+            <h4>Business Website</h4>
+            <div class="price">$499<span>/project</span></div>
+            <ul class="list-unstyled mb-4">
+              <li><i class="fas fa-check text-success me-2"></i>Up to 15 Pages</li>
+              <li><i class="fas fa-check text-success me-2"></i>Advanced SEO</li>
+              <li><i class="fas fa-check text-success me-2"></i>CMS Integration</li>
+              <li><i class="fas fa-check text-success me-2"></i>Gallery & Blog</li>
+              <li><i class="fas fa-check text-success me-2"></i>Basic E-commerce</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary w-100">Get Started</a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="pricing-card">
+            <h4>Custom System</h4>
+            <div class="price">Custom<span>/quote</span></div>
+            <ul class="list-unstyled mb-4">
+              <li><i class="fas fa-check text-success me-2"></i>School Management</li>
+              <li><i class="fas fa-check text-success me-2"></i>CBT Exam Software</li>
+              <li><i class="fas fa-check text-success me-2"></i>Full E-commerce</li>
+              <li><i class="fas fa-check text-success me-2"></i>Custom Features</li>
+              <li><i class="fas fa-check text-success me-2"></i>Ongoing Support</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline-primary w-100">Get Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="bg-light">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Client Testimonials</h2>
+        <p class="text-muted">What our clients say about our work</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              "The school management system transformed our administrative work. The CBT module works perfectly for our exams."
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="flex-shrink-0">
+                <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                  <span class="text-white fw-bold">AS</span>
+                </div>
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <h6 class="mb-0">Abdullahi S.</h6>
+                <small class="text-muted">Principal, Greenfield Academy</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              "Our new website increased our online sales by 40% in just 3 months. Professional work with excellent support."
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="flex-shrink-0">
+                <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                  <span class="text-white fw-bold">MA</span>
+                </div>
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <h6 class="mb-0">Maryam A.</h6>
+                <small class="text-muted">Owner, Fashion Boutique</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              "The custom CBT system handles 500+ students simultaneously during exams. Reliable and user-friendly."
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="flex-shrink-0">
+                <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                  <span class="text-white fw-bold">UT</span>
+                </div>
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <h6 class="mb-0">Usman T.</h6>
+                <small class="text-muted">IT Manager, Excel College</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Contact Us</h2>
+        <p class="text-muted">Ready to start your project? Get in touch today</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="contact-form" data-aos="fade-up">
+            <form id="contactForm">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Your Name *</label>
+                    <input type="text" class="form-control" id="name" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email Address *</label>
+                    <input type="email" class="form-control" id="email" required>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="service" class="form-label">Service Interested In</label>
+                <select class="form-select" id="service">
+                  <option value="">Select a service</option>
+                  <option value="school">School Management System</option>
+                  <option value="business">Business Website</option>
+                  <option value="cbt">CBT Exam Software</option>
+                  <option value="custom">Custom Web Application</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Project Details *</label>
+                <textarea class="form-control" id="message" rows="5" required></textarea>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+              </div>
+            </form>
+            <div class="text-center mt-4">
+              <p class="mb-2">Or contact us directly:</p>
+              <div class="d-flex justify-content-center gap-3">
+                <a href="https://wa.me/234XXXXXXXXXX" class="btn btn-success">
+                  <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                </a>
+                <a href="tel:+234XXXXXXXXXX" class="btn btn-outline-primary">
+                  <i class="fas fa-phone me-2"></i>Call Now
+                </a>
+                <a href="mailto:hello@webcraftpro.com" class="btn btn-outline-dark">
+                  <i class="fas fa-envelope me-2"></i>Email
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h4 class="text-white mb-4">
+            <i class="fas fa-code me-2"></i>WebCraft Pro
+          </h4>
+          <p>Professional web design and development services specializing in school management systems, business websites, and custom web applications.</p>
+          <div class="social-icons mt-4">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4">
+          <div class="footer-links">
+            <h5>Quick Links</h5>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="footer-links">
+            <h5>Services</h5>
+            <ul>
+              <li><a href="#services">School Websites</a></li>
+              <li><a href="#services">CBT Software</a></li>
+              <li><a href="#services">Business Websites</a></li>
+              <li><a href="#services">Custom Applications</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 mb-4">
+          <div class="footer-links">
+            <h5>Contact Info</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Lagos, Nigeria</li>
+              <li class="mb-2"><i class="fas fa-phone me-2"></i> +234 XXX XXX XXXX</li>
+              <li class="mb-2"><i class="fas fa-envelope me-2"></i> hello@webcraftpro.com</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4" style="border-color: #444;">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">&copy; 2025 WebCraft Pro. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <p class="mb-0">Designed with <i class="fas fa-heart text-danger"></i> for your digital success</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/234XXXXXXXXXX" class="floating-whatsapp" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Preloader
+    window.addEventListener('load', function() {
+      document.getElementById('preloader').style.display = 'none';
+    });
+
+    // Typing Effect
+    const typingText = document.getElementById('typingText');
+    const texts = ["Web Design", "CBT Software", "School Systems", "Business Solutions"];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+
+    function typeEffect() {
+      const currentText = texts[textIndex];
+      
+      if (isDeleting) {
+        typingText.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+        typingSpeed = 50;
+      } else {
+        typingText.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+        typingSpeed = 100;
+      }
+
+      if (!isDeleting && charIndex === currentText.length) {
+        typingSpeed = 1500;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % texts.length;
+        typingSpeed = 500;
+      }
+
+      setTimeout(typeEffect, typingSpeed);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(typeEffect, 1000);
+    });
+
+    // Counter Animation
+    function animateCounters() {
+      const counters = document.querySelectorAll('.counter');
+      const speed = 200;
+
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = target / speed;
+
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(animateCounters, 1);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      });
+    }
+
+    // Start counters when section is in view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    const statsSection = document.querySelector('.stats-section');
+    if (statsSection) {
+      observer.observe(statsSection);
+    }
+
+    // Dark Mode Toggle
+    const darkToggle = document.getElementById('darkToggle');
+    darkToggle.addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
+      const icon = this.querySelector('i');
+      if (document.body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        this.setAttribute('title', 'Switch to Light Mode');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        this.setAttribute('title', 'Switch to Dark Mode');
+      }
+    });
+
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Form Submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value;
+      
+      // Here you would typically send this to a server
+      // For demo purposes, we'll just show an alert
+      alert(`Thank you ${name}! Your message has been received. We'll contact you at ${email} regarding your ${service} inquiry.`);
+      
+      // Reset form
+      this.reset();
+    });
+
+    // Navbar background on scroll
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.style.backgroundColor = 'rgba(26, 26, 46, 0.98)';
+        navbar.style.padding = '0.5rem 0';
+      } else {
+        navbar.style.backgroundColor = 'rgba(26, 26, 46, 0.95)';
+        navbar.style.padding = '1rem 0';
+      }
+    });
+  </script>
+</body>
+</html>
