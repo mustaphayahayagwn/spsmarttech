@@ -42,6 +42,18 @@
       font-weight: 700;
     }
     
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--dark);
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    
     /* Navbar */
     .navbar {
       background-color: rgba(26, 26, 46, 0.95) !important;
@@ -216,6 +228,7 @@
       transition: all 0.3s ease;
       border: 2px solid #e9ecef;
       height: 100%;
+      position: relative;
     }
     
     .pricing-card.featured {
@@ -266,25 +279,93 @@
       font-family: serif;
     }
     
-    /* Contact */
+    /* Contact Section - Enhanced */
     .contact-form {
       background: white;
-      border-radius: 12px;
+      border-radius: 20px;
       padding: 2.5rem;
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s;
     }
     
-    .form-control {
+    .contact-form:hover {
+      transform: translateY(-5px);
+    }
+    
+    .form-control, .form-select {
       padding: 0.8rem 1rem;
       border: 1px solid #dee2e6;
-      border-radius: 8px;
+      border-radius: 12px;
       margin-bottom: 1.5rem;
       transition: all 0.3s;
     }
     
-    .form-control:focus {
+    .form-control:focus, .form-select:focus {
       border-color: var(--primary);
       box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
+    }
+    
+    .contact-social-links {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e9ecef;
+    }
+    
+    .social-contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    
+    .social-contact-btn.whatsapp {
+      background: #25D366;
+      color: white;
+      border: none;
+    }
+    
+    .social-contact-btn.whatsapp:hover {
+      background: #128C7E;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+    }
+    
+    .social-contact-btn.facebook {
+      background: #1877F2;
+      color: white;
+    }
+    
+    .social-contact-btn.facebook:hover {
+      background: #0E5DBA;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(24, 119, 242, 0.4);
+    }
+    
+    .social-contact-btn.email {
+      background: #ea4335;
+      color: white;
+    }
+    
+    .social-contact-btn.email:hover {
+      background: #c5221f;
+      transform: translateY(-3px);
+    }
+    
+    /* Netlify Form specific styling */
+    .netlify-form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .netlify-form-group label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: block;
+      color: var(--dark);
     }
     
     /* Statistics */
@@ -366,11 +447,13 @@
       box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
       z-index: 1000;
       transition: all 0.3s;
+      text-decoration: none;
     }
     
     .floating-whatsapp:hover {
       transform: scale(1.1);
       box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+      color: white;
     }
     
     /* Dark Mode */
@@ -387,10 +470,23 @@
       border-color: #333;
     }
     
-    body.dark-mode .form-control {
+    body.dark-mode .form-control,
+    body.dark-mode .form-select {
       background-color: #2d2d2d;
       border-color: #444;
       color: #e0e0e0;
+    }
+    
+    body.dark-mode .contact-social-links {
+      border-top-color: #333;
+    }
+    
+    /* Alert styling */
+    .alert-success {
+      background-color: #d4edda;
+      border-color: #c3e6cb;
+      color: #155724;
+      border-radius: 12px;
     }
     
     /* Responsive */
@@ -409,6 +505,11 @@
       
       .pricing-card.featured {
         transform: none;
+      }
+      
+      .social-contact-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -720,7 +821,7 @@
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- Contact Section with Netlify Form -->
   <section id="contact">
     <div class="container">
       <div class="section-title" data-aos="fade-up">
@@ -730,51 +831,48 @@
       <div class="row justify-content-center">
         <div class="col-lg-8">
           <div class="contact-form" data-aos="fade-up">
-            <form id="contactForm">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="mb-3">
-                    <label for="name" class="form-label">Your Name *</label>
-                    <input type="text" class="form-control" id="name" required>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="mb-3">
-                    <label for="email" class="form-label">Email Address *</label>
-                    <input type="email" class="form-control" id="email" required>
-                  </div>
-                </div>
+            <!-- Netlify Contact Form - Exact structure preserved -->
+            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="netlifyContactForm">
+              <input type="hidden" name="form-name" value="contact" />
+
+              <!-- Honeypot field -->
+              <p style="display:none;">
+                <label>Don’t fill this out: <input name="bot-field" /></label>
+              </p>
+
+              <div class="netlify-form-group">
+                <label for="netlify-name"><i class="fas fa-user me-2"></i>Your Name *</label>
+                <input type="text" name="name" id="netlify-name" class="form-control" placeholder="Your Name" required />
               </div>
-              <div class="mb-3">
-                <label for="service" class="form-label">Service Interested In</label>
-                <select class="form-select" id="service">
-                  <option value="">Select a service</option>
-                  <option value="school">School Management System</option>
-                  <option value="business">Business Website</option>
-                  <option value="cbt">CBT Exam Software</option>
-                  <option value="custom">Custom Web Application</option>
-                  <option value="other">Other</option>
-                </select>
+
+              <div class="netlify-form-group">
+                <label for="netlify-email"><i class="fas fa-envelope me-2"></i>Your Email *</label>
+                <input type="email" name="email" id="netlify-email" class="form-control" placeholder="Your Email" required />
               </div>
-              <div class="mb-3">
-                <label for="message" class="form-label">Project Details *</label>
-                <textarea class="form-control" id="message" rows="5" required></textarea>
+
+              <div class="netlify-form-group">
+                <label for="netlify-message"><i class="fas fa-comment-dots me-2"></i>Your Message *</label>
+                <textarea name="message" id="netlify-message" class="form-control" rows="5" placeholder="Tell us about your project..." required></textarea>
               </div>
+
               <div class="d-grid">
-                <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                <button type="submit" class="btn btn-primary btn-lg">
+                  <i class="fas fa-paper-plane me-2"></i>Send Message
+                </button>
               </div>
             </form>
-            <div class="text-center mt-4">
-              <p class="mb-2">Or contact us directly:</p>
-              <div class="d-flex justify-content-center gap-3">
-                <a href="https://wa.me/234XXXXXXXXXX" class="btn btn-success">
-                  <i class="fab fa-whatsapp me-2"></i>WhatsApp
+            
+            <div class="contact-social-links">
+              <p class="text-center mb-3 fw-semibold">Or connect with me directly:</p>
+              <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="https://wa.me/234XXXXXXXXXX" class="social-contact-btn whatsapp" target="_blank">
+                  <i class="fab fa-whatsapp fa-lg"></i> WhatsApp Me
                 </a>
-                <a href="tel:+234XXXXXXXXXX" class="btn btn-outline-primary">
-                  <i class="fas fa-phone me-2"></i>Call Now
+                <a href="https://m.me/YourFacebookUsername" class="social-contact-btn facebook" target="_blank">
+                  <i class="fab fa-facebook-messenger fa-lg"></i> Facebook Messenger
                 </a>
-                <a href="mailto:hello@webcraftpro.com" class="btn btn-outline-dark">
-                  <i class="fas fa-envelope me-2"></i>Email
+                <a href="mailto:hello@spsmarttech.com" class="social-contact-btn email">
+                  <i class="fas fa-envelope fa-lg"></i> Send Email
                 </a>
               </div>
             </div>
@@ -790,7 +888,7 @@
       <div class="row">
         <div class="col-lg-4 mb-4">
           <h4 class="text-white mb-4">
-            <i class="fas fa-code me-2"></i>WebCraft Pro
+            <i class="fas fa-code me-2"></i>spsmarttech
           </h4>
           <p>Professional web design and development services specializing in school management systems, business websites, and custom web applications.</p>
           <div class="social-icons mt-4">
@@ -815,7 +913,7 @@
           <div class="footer-links">
             <h5>Services</h5>
             <ul>
-              <li><a href="#services">School Websites</a></li>
+              <li><a href="#services">School Systems</a></li>
               <li><a href="#services">CBT Software</a></li>
               <li><a href="#services">Business Websites</a></li>
               <li><a href="#services">Custom Applications</a></li>
@@ -826,8 +924,8 @@
           <div class="footer-links">
             <h5>Contact Info</h5>
             <ul class="list-unstyled">
-              <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Lagos, Nigeria</li>
-              <li class="mb-2"><i class="fas fa-phone me-2"></i> +234 8104904504</li>
+              <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Abuja, Nigeria</li>
+              <li class="mb-2"><i class="fas fa-phone me-2"></i> +234 9104904504</li>
               <li class="mb-2"><i class="fas fa-envelope me-2"></i> spgwandu@gmail.com</li>
             </ul>
           </div>
@@ -836,7 +934,7 @@
       <hr class="my-4" style="border-color: #444;">
       <div class="row">
         <div class="col-md-6 text-center text-md-start">
-          <p class="mb-0">&copy; 2025 WebCraft Pro. All rights reserved.</p>
+          <p class="mb-0">&copy; 2025 spsmarttech. All rights reserved.</p>
         </div>
         <div class="col-md-6 text-center text-md-end">
           <p class="mb-0">Designed with <i class="fas fa-heart text-danger"></i> for your digital success</p>
@@ -863,7 +961,13 @@
 
     // Preloader
     window.addEventListener('load', function() {
-      document.getElementById('preloader').style.display = 'none';
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 500);
+      }
     });
 
     // Typing Effect
@@ -904,30 +1008,32 @@
     });
 
     // Counter Animation
+    let countersStarted = false;
     function animateCounters() {
+      if (countersStarted) return;
+      countersStarted = true;
       const counters = document.querySelectorAll('.counter');
-      const speed = 200;
-
       counters.forEach(counter => {
         const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const increment = target / speed;
-
-        if (count < target) {
-          counter.innerText = Math.ceil(count + increment);
-          setTimeout(animateCounters, 1);
-        } else {
-          counter.innerText = target.toLocaleString();
-        }
+        let count = 0;
+        const increment = target / 80;
+        const updateCounter = () => {
+          count += increment;
+          if (count < target) {
+            counter.innerText = Math.ceil(count);
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.innerText = target.toLocaleString();
+          }
+        };
+        updateCounter();
       });
     }
 
-    // Start counters when section is in view
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !countersStarted) {
           animateCounters();
-          observer.unobserve(entry.target);
         }
       });
     });
@@ -945,47 +1051,26 @@
       if (document.body.classList.contains('dark-mode')) {
         icon.classList.remove('fa-moon');
         icon.classList.add('fa-sun');
-        this.setAttribute('title', 'Switch to Light Mode');
       } else {
         icon.classList.remove('fa-sun');
         icon.classList.add('fa-moon');
-        this.setAttribute('title', 'Switch to Dark Mode');
       }
     });
 
     // Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const targetElement = document.querySelector(href);
         if (targetElement) {
+          e.preventDefault();
           window.scrollTo({
             top: targetElement.offsetTop - 80,
             behavior: 'smooth'
           });
         }
       });
-    });
-
-    // Form Submission
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Get form data
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const service = document.getElementById('service').value;
-      const message = document.getElementById('message').value;
-      
-      // Here you would typically send this to a server
-      // For demo purposes, we'll just show an alert
-      alert(`Thank you ${name}! Your message has been received. We'll contact you at ${email} regarding your ${service} inquiry.`);
-      
-      // Reset form
-      this.reset();
     });
 
     // Navbar background on scroll
